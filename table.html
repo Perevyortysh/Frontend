@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+
+<table>
+    <caption>Список студентов</caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО студента</th>
+            <th>Номер зачётной книжки</th>
+            <th>Номер группы</th>
+            <th>Пол</th>
+            <th>Возраст</th>
+            <th>Форма поступления</th>
+            <th>Название направления</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Иванов Иван Иванович</td>
+            <td>12345</td>
+            <td>101</td>
+            <td>М</td>
+            <td>20</td>
+            <td>Очная</td>
+            <td>Информатика</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Петрова Мария Сергеевна</td>
+            <td>12346</td>
+            <td>102</td>
+            <td>Ж</td>
+            <td>21</td>
+            <td>Очно-заочная</td>
+            <td>Экономика</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Сидоров Алексей Петрович</td>
+            <td>12347</td>
+            <td>103</td>
+            <td>М</td>
+            <td>22</td>
+            <td>Заочная</td>
+            <td>Физика</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Кузнецова Ольга Дмитриевна</td>
+            <td>12348</td>
+            <td>104</td>
+            <td>Ж</td>
+            <td>19</td>
+            <td>Очная</td>
+            <td>Математика</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Васильев Дмитрий Александрович</td>
+            <td>12349</td>
+            <td>105</td>
+            <td>М</td>
+            <td>23</td>
+            <td>Очная</td>
+            <td>Химия</td>
+        </tr>
+    </tbody>
+</table>
+
+<form id="addStudentForm" style="margin-top: 20px;">
+    <h3>Добавить нового студента</h3>
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" required><br>
+
+    <label for="name">ФИО студента:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="recordBook">Номер зачётной книжки:</label>
+    <input type="text" id="recordBook" name="recordBook" required><br>
+
+    <label for="group">Номер группы:</label>
+    <input type="text" id="group" name="group" required><br>
+
+    <label for="gender">Пол:</label>
+    <select id="gender" name="gender" required>
+        <option value="М">М</option>
+        <option value="Ж">Ж</option>
+    </select><br>
+
+    <label for="age">Возраст:</label>
+    <input type="number" id="age" name="age" required><br>
+
+    <label for="admissionForm">Форма поступления:</label>
+    <select id="admissionForm" name="admissionForm" required>
+        <option value="Очная">Очная</option>
+        <option value="Очно-заочная">Очно-заочная</option>
+        <option value="Заочная">Заочная</option>
+    </select><br>
+
+    <label for="direction">Название направления:</label>
+    <input type="text" id="direction" name="direction" required><br>
+
+    <button type="button" onclick="addRow()">Добавить</button>
+</form>
+
+<div class="header">
+    <a href="laba1.html">Основная страница</a>
+    <a href="page2.html">Позиционирование элементов</a>
+    <a href="table.html">Таблица</a>
+</div>
+
+<script>
+    function addRow() {
+        const table = document.querySelector("table tbody");
+
+        // Считываем данные из формы
+        const id = document.getElementById("id").value;
+        const name = document.getElementById("name").value;
+        const recordBook = document.getElementById("recordBook").value;
+        const group = document.getElementById("group").value;
+        const gender = document.getElementById("gender").value;
+        const age = document.getElementById("age").value;
+        const admissionForm = document.getElementById("admissionForm").value;
+        const direction = document.getElementById("direction").value;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${recordBook}</td>
+            <td>${group}</td>
+            <td>${gender}</td>
+            <td>${age}</td>
+            <td>${admissionForm}</td>
+            <td>${direction}</td>
+        `;
+
+        table.appendChild(row);
+
+        document.getElementById("addStudentForm").reset();
+    }
+</script>
+
+</body>
+
+</html>
